@@ -1,11 +1,9 @@
 defmodule CsvTable.Importer do
-
- def preview(rows) do
+  def preview(rows) do
     rows
     |> Enum.take(5)
     |> transform_keys()
     |> IO.inspect(label: "This is preview data structure")
-    
   end
 
   def import(rows) do
@@ -29,5 +27,4 @@ defmodule CsvTable.Importer do
     |> String.replace(" ", "")
     |> Phoenix.Naming.underscore()
   end
-
 end

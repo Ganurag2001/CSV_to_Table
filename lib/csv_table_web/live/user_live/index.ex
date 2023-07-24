@@ -47,33 +47,36 @@ defmodule CsvTableWeb.UserLive.Index do
     {:noreply, stream_delete(socket, :users, user)}
   end
 
-
   @impl true
   def render(assigns) do
-  ~H"""
-  <%= if @donwload_completed do %>
-   <div class="notification">Download is completed </div>
-  <% end %>
-  <button 
-  phx-click="don">
-  Download All</button>
-  """
+    ~H"""
+    <%= if @donwload_completed do %>
+      <div class="notification">Download is completed</div>
+    <% end %>
+    <button phx-click="don">
+      Download All
+    </button>
+    """
   end
 
   @impl true
   def handle_event("don", params, socket) do
+    data = CsvTable.Repo.all(CsvTable.Accounts.User)
 
-   data = CsvTable.Repo.all(CsvTable.Accounts.User)
+    dataset =
+      Enum.join(
+        for user <- data do
+          "#{user.name}, #{user.age}, #{user.email}"
+        end,
+        "\n"
+      )
 
-   dataset = Enum.join(for user <- data do "#{user.name}, #{user.age}, #{user.email}" end, "\n")
+    csv_content = "name,age,email\n #{dataset}"
 
-   csv_content = "name,age,email\n #{dataset}"
+    params |> IO.inspect(label: "This is params")
 
-   params |> IO.inspect(label: "This is params")
-
-   File.write!("output.csv", csv_content)
+    File.write!("output.csv", csv_content)
 
     {:noreply, assign(socket, :donwload_completed, true)}
   end
-
 end

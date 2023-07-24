@@ -35,7 +35,12 @@ defmodule CsvTable.CsvUploadTest do
 
     test "update_upload/2 with valid data updates the upload" do
       upload = upload_fixture()
-      update_attrs = %{age: "some updated age", email: "some updated email", name: "some updated name"}
+
+      update_attrs = %{
+        age: "some updated age",
+        email: "some updated email",
+        name: "some updated name"
+      }
 
       assert {:ok, %Upload{} = upload} = CsvUpload.update_upload(upload, update_attrs)
       assert upload.age == "some updated age"

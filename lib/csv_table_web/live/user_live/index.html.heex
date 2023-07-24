@@ -1,4 +1,3 @@
-
 <div :if={@sample_customers != []} class="space-y-2">
   <h3 class="text-xl font-bold">Preview</h3>
   <.table id="customers" rows={@sample_customers}>
@@ -13,7 +12,6 @@
 
 <div :if={@imported_customers != []} class="space-y-2">
   <h3 class="text-xl font-bold">Import Result</h3>
-  <p>Success: <%= length(for {:ok, _} = row <- @imported_customers , do: row) %> imports</p>
-  <p>Failed: <%= length(for {:error, _} = row <- @imported_customers , do: row) %> imports</p>
+  <p>Success: <%= length(for {:ok, _} = row <- @imported_customers, do: row) %> imports</p>
+  <p>Failed: <%= length(for {:error, _} = row <- @imported_customers, do: row) %> imports</p>
 </div>
-

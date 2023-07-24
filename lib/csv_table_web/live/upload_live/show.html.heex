@@ -16,7 +16,12 @@
 
 <.back navigate={~p"/uploads"}>Back to uploads</.back>
 
-<.modal :if={@live_action == :edit} id="upload-modal" show on_cancel={JS.patch(~p"/uploads/#{@upload}")}>
+<.modal
+  :if={@live_action == :edit}
+  id="upload-modal"
+  show
+  on_cancel={JS.patch(~p"/uploads/#{@upload}")}
+>
   <.live_component
     module={CsvTableWeb.UploadLive.FormComponent}
     id={@upload.id}

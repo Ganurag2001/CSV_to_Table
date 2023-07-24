@@ -4,14 +4,24 @@
     Open up the file below in Excel, Google sheets or a similar
   </:subtitle>
   <:actions>
-    <.link href={~p"/uploads"} target="_blank" class="text-sm font-semibold leading-6 text-zinc-900 hover:text-zinc-700">
+    <.link
+      href={~p"/uploads"}
+      target="_blank"
+      class="text-sm font-semibold leading-6 text-zinc-900 hover:text-zinc-700"
+    >
       Download Sample CSV
     </.link>
   </:actions>
 </.header>
 
 <div class="my-12">
-  <form :if={length(@parsed_rows) == 0} id="upload-form" phx-submit="parse" phx-change="validate" class="space-y-2">
+  <form
+    :if={length(@parsed_rows) == 0}
+    id="upload-form"
+    phx-submit="parse"
+    phx-change="validate"
+    class="space-y-2"
+  >
     <div class="p-4 border border-zinc-200 rounded" phx-drop-target={@uploads.sample_csv.ref}>
       <.live_file_input upload={@uploads.sample_csv} />
     </div>

@@ -26,21 +26,13 @@ defmodule CsvTableWeb.Router do
     live "/users/:id", UserLive.Show, :show
     live "/users/:id/show/edit", UserLive.Show, :edit
 
-
     live "/uploads", UploadLive.Index, :index
     live "/uploads/new", UploadLive.Index, :new
     live "/uploads/:id/edit", UploadLive.Index, :edit
 
     live "/uploads/:id", UploadLive.Show, :show
     live "/uploads/:id/show/edit", UploadLive.Show, :edit
-
-
-
   end
-
-
-
-
 
   # Other scopes may use custom stacks.
   # scope "/api", CsvTableWeb do
