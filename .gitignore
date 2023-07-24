@@ -35,3 +35,4 @@ csv_table-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.elixir_ls
