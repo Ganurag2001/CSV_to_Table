@@ -36,9 +36,9 @@
 <div :if={@sample_customers != []} class="space-y-2">
   <h3 class="text-xl font-bold">Preview</h3>
   <.table id="customers" rows={@sample_customers}>
-    <:col :let={customer} label="First name"><%= customer["age"] %></:col>
-    <:col :let={customer} label="Last name"><%= customer["email"] %></:col>
-    <:col :let={customer} label="Email"><%= customer["name"] %></:col>
+    <:col :let={customer} label="First name"><%= customer["name"] %></:col>
+    <:col :let={customer} label="Age"><%= customer["age"] %></:col>
+    <:col :let={customer} label="Email"><%= customer["email"] %></:col>
   </.table>
   <p>This is a sample of the data to import</p>
   <.button type="button" phx-click="import">Import Now</.button>

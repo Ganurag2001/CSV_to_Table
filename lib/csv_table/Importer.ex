@@ -1,15 +1,13 @@
 defmodule CsvTable.Importer do
   def preview(rows) do
     rows
-    |> Enum.take(5)
+    |> Enum.take(length(rows))
     |> transform_keys()
-    |> IO.inspect(label: "This is preview data structure")
   end
 
   def import(rows) do
     rows
     |> transform_keys()
-    |> IO.inspect(label: "This is import data structure")
   end
 
   # "First Name" => "first_name"

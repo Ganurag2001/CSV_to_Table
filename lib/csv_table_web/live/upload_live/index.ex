@@ -14,9 +14,7 @@ defmodule CsvTableWeb.UploadLive.Index do
   end
 
   @impl true
-  def handle_event("reset", params, socket) do
-    params |> IO.inspect(label: "this is new stuff.")
-
+  def handle_event("reset", _params, socket) do
     {:noreply,
      socket
      |> assign(:parsed_rows, [])
@@ -25,15 +23,12 @@ defmodule CsvTableWeb.UploadLive.Index do
      |> assign(:uploaded_files, [])}
   end
 
-  def handle_event("validate", params, socket) do
-    params |> IO.inspect(label: "validate params ")
+  def handle_event("validate", _params, socket) do
     {:noreply, socket}
   end
 
   def handle_event("parse", _, socket) do
-    parsed_rows =
-      parse_csv(socket)
-      |> IO.inspect(label: "parsed csv------")
+    parsed_rows = parse_csv(socket)
 
     {
       :noreply,
@@ -55,6 +50,5 @@ defmodule CsvTableWeb.UploadLive.Index do
       {:ok, rows}
     end)
     |> List.flatten()
-    |> IO.inspect(label: "parse_csv - consume uploaded netries ")
   end
 end
