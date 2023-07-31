@@ -49,3 +49,9 @@
   <p>Success: <%= length(for {:ok, _} = row <- @imported_customers, do: row) %> imports</p>
   <p>Failed: <%= length(for {:error, _} = row <- @imported_customers, do: row) %> imports</p>
 </div>
+
+<Timeline.activity_logs
+  stream={@streams.activity_logs}
+  page={@page}
+  end_of_timeline?={@end_of_timeline?}
+/>
